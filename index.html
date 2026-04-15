@@ -6,7 +6,6 @@
     <title>Instrumento de Decisión Estratégica: Liderazgo y Motivación</title>
     <style>
         :root {
-            /* Paleta técnica validada v3.1 */
             --primary: #1a365d;
             --secondary: #2c5282;
             --accent: #ed8936;
@@ -27,6 +26,7 @@
             line-height: 1.5;
             margin: 0;
             padding: 20px;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
@@ -34,7 +34,6 @@
             margin: 0 auto;
         }
 
-        /* Header de Contexto Organizacional */
         .header-panel {
             background: var(--primary);
             color: white;
@@ -47,7 +46,6 @@
         .header-panel h1 { margin: 0 0 10px 0; font-size: 1.8rem; }
         .header-panel p { margin: 0; opacity: 0.9; font-size: 1.05rem; }
 
-        /* Grid de Perfiles Matizados P5 */
         .candidate-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -60,11 +58,12 @@
             border-radius: var(--border-radius);
             padding: 25px;
             border: 2px solid transparent;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: var(--shadow);
             cursor: pointer;
             display: flex;
             flex-direction: column;
+            outline: none;
         }
 
         .candidate-card:hover {
@@ -72,9 +71,14 @@
             border-color: var(--secondary);
         }
 
+        .candidate-card:focus {
+            box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.3);
+        }
+
         .candidate-card.selected {
             border-color: var(--accent);
             background: #fffaf0;
+            box-shadow: 0 0 0 2px var(--accent);
         }
 
         .n-tag {
@@ -86,6 +90,7 @@
             border-radius: 6px;
             display: inline-block;
             margin-bottom: 12px;
+            width: fit-content;
         }
 
         .candidate-title {
@@ -118,21 +123,10 @@
             border-radius: 8px;
             font-size: 0.9rem;
             margin-top: auto;
+            border: 1px solid #feb2b2;
         }
 
-        /* Estilo de Autoría Integrado */
-        .credits-footer {
-            margin-top: 30px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        /* Botón y Feedback Robusto */
-        .footer-action { text-align: center; }
+        .footer-action { text-align: center; margin-bottom: 40px; }
 
         .btn-submit {
             background: var(--accent);
@@ -147,14 +141,20 @@
             box-shadow: 0 4px 14px rgba(237, 137, 54, 0.4);
         }
 
+        .btn-submit:hover:not(:disabled) {
+            background: #dd6b20;
+            transform: scale(1.02);
+        }
+
         .btn-submit:disabled { background: #a0aec0; cursor: not-allowed; box-shadow: none; }
 
         #feedback-panel {
             display: none;
-            margin-top: 40px;
-            padding: 30px;
+            margin-top: 20px;
+            padding: 35px;
             border-radius: var(--border-radius);
             animation: fadeIn 0.6s ease;
+            box-shadow: var(--shadow);
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -164,9 +164,24 @@
 
         .reflection-box {
             margin-top: 20px;
-            background: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.6);
             padding: 20px;
             border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .credits-footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            .candidate-grid { grid-template-columns: 1fr; }
+            .header-panel h1 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -174,47 +189,47 @@
 
 <div class="container">
     <div class="header-panel">
-        <h1>Crisis en Sucursal Sur: Liderazgo y motivación</h1>
-        <p>La sucursal Sur del banco está en crisis: el clima laboral es tóxico y las metas de venta han caído un 30%. El equipo está desmoralizado y hay constantes conflictos internos. El Gerente Regional debe elegir a un líder que  recupere los números y reconstruya el equipo y el clima laboral.</p>
+        <h1>Crisis en Sucursal Sur: Liderazgo y Motivación</h1>
+        <p>Entorno: Sucursal en crisis (Ventas -30%). Objetivo: Seleccionar un líder que recupere el desempeño y sane el clima laboral. Basado en el modelo de McClelland.</p>
     </div>
 
     <div class="candidate-grid" id="grid">
-        <div class="candidate-card" onclick="select('A')">
-            <span class="n-tag">Logro</span>
+        <div class="candidate-card" tabindex="0" onclick="select('A')" id="card-A">
+            <span class="n-tag">Necesidad de Logro (nAch)</span>
             <div class="candidate-title">Andrés: El Impulsor Técnico</div>
             <div class="card-content">
                 <span class="section-label">Perfil</span>
-                <p>No es solo un vendedor exitoso; es un "perfeccionista operativo". Su éxito radica en la autoexigencia extrema.</p>
+                <p>Extraordinario ejecutor individual y perfeccionista operativo. Su éxito radica en una autoexigencia técnica extrema.</p>
                 <span class="section-label">Matiz de Propuesta</span>
-                <p>"La crisis se resuelve con el ejemplo, no con reuniones. Tomaré la cartera corporativa más crítica. Quien quiera aprender, que me siga el ritmo".</p>
+                <p>"La crisis se resuelve con el ejemplo activo. Tomaré la cartera corporativa más crítica. Quien quiera aprender, que me siga el ritmo".</p>
                 <span class="section-label">Riesgo</span>
-                <p class="risk-text">Generar dependencia  que puede ir en detrimento del trabajo en equipo . Al asumir personalmente tareas complejas, anula el desarrollo del equipo. El resultado es su única "verdad" de la organización.</p>
+                <p class="risk-text">Genera una dependencia patológica del líder. Al absorber personalmente las tareas, anula el desarrollo de competencias del equipo.</p>
             </div>
         </div>
 
-        <div class="candidate-card" onclick="select('B')">
-            <span class="n-tag">Afiliación</span>
+        <div class="candidate-card" tabindex="0" onclick="select('B')" id="card-B">
+            <span class="n-tag">Necesidad de Afiliación (nAff)</span>
             <div class="candidate-title">Beatriz: La Cohesionadora Emocional</div>
             <div class="card-content">
                 <span class="section-label">Perfil</span>
-                <p>Entiende la organización como un tejido social. Su fortaleza es la inteligencia emocional y la formaación e integración de equipos.</p>
+                <p>Experta en inteligencia emocional y formación de vínculos. Ve a la organización como un sistema de relaciones sociales.</p>
                 <span class="section-label">Matiz de Propuesta</span>
-                <p>"Un equipo partido no puede vender. Mi prioridad es restaurar la confianza y seguridad psicológica ante la Regional".</p>
+                <p>"Un equipo fragmentado no puede vender. Mi prioridad absoluta es restaurar la confianza y seguridad psicológica ante la Regional".</p>
                 <span class="section-label">Riesgo</span>
-                <p class="risk-text">Entropía por complacencia (crisis internas por la falta de cuestionamiento, adaptación y mejora continua, producto de la comodidad o el exceso de confianza). Su aversión al conflicto genera puntos ciegos y desmotiva a perfiles de alto desempeño.</p>
+                <p class="risk-text">Entropía por complacencia. Su aversión al conflicto genera "puntos ciegos" operativos y desmotiva al alto desempeño.</p>
             </div>
         </div>
 
-        <div class="candidate-card" onclick="select('C')">
-            <span class="n-tag">Poder</span>
-            <div class="candidate-title">Lucia: La Arquitecta de Poder</div>
+        <div class="candidate-card" tabindex="0" onclick="select('C')" id="card-C">
+            <span class="n-tag">Necesidad de Poder (nPow)</span>
+            <div class="candidate-title">Lucía: La Arquitecta de Poder</div>
             <div class="card-content">
                 <span class="section-label">Perfil</span>
-                <p>Gestora de recursos y estructuras. El liderazgo es el ejercicio de influencia para remover obstáculos sistémicos.</p>
+                <p>Gestora de recursos e influencias estructurales. Entiende el liderazgo como el ejercicio para remover obstáculos sistémicos.</p>
                 <span class="section-label">Matiz de Propuesta</span>
                 <p>"La sucursal perdió peso político. Necesito un mandato para reestructurar y negociar presupuesto. Requiero lealtad absoluta".</p>
                 <span class="section-label">Riesgo</span>
-                <p class="risk-text">Peligro de "poder personalizado". Generación de redes de lealtades  personales y acallamiento de voces de talentos disidentes.</p>
+                <p class="risk-text">Peligro de "poder personalizado". Riesgo de crear redes de lealtad personal que silencien las voces de talento crítico.</p>
             </div>
         </div>
     </div>
@@ -228,69 +243,90 @@
         <p id="f-text" style="font-size:1.1rem"></p>
         <div class="reflection-box">
             <strong>Preguntas de Reflexión Crítica:</strong>
-            <ul id="f-questions"></ul>
+            <ul id="f-questions" style="margin-bottom:0"></ul>
         </div>
-        <button class="btn-submit" style="margin-top:25px; padding:12px 30px; font-size:0.9rem" onclick="location.reload()">Analizar otro enfoque</button>
+        <div style="text-align: right; margin-top: 30px;">
+            <button class="btn-submit" style="padding:12px 30px; font-size:0.9rem" onclick="location.reload()">Analizar otro enfoque</button>
+        </div>
     </div>
 
     <div class="credits-footer">
         Elaborado por <strong>Cecilia Carrasco Rivera</strong> <br>
-        Para el curso de <strong>[Gestión de las Relaciones en las Organizaciones]</strong> <br>
-        <em>Instrumento de Evaluación Formativa - 2026</em>
+        Curso: <strong>Gestión de las Relaciones en las Organizaciones</strong> <br>
+        <em>Instrumento Formativo - Nivel P5 (2026)</em>
     </div>
 </div>
 
 <script>
-    let selected = null;
+    /**
+     * Gestión de Selección y Feedback - Política 0 Bugs
+     */
+    let selectedId = null;
 
-    const data = {
+    const feedbackConfig = {
         'A': {
-            title: "Selección: Andrés (Logro)",
-            text: "Andrés es un líder enfocado en las tareas, pero su enfoque en el 'Hacer' genera una cultura que puede generar dependencia donde él es el único héroe. Según McClelland, un líder con alto enfoque en logro sin un "poder socializado" puede afectar el crecimiento del equipo. Un líder que ejerce microgestión centraliza decisiones, revisa cada detalle y evita delegar: el equipo se siente incapaz de alcanzar sus estándares y deja de intentarlo, delegando toda la responsabilidad en el líder. Es una solución de corto plazo que no cura la crisis cultural de fondo.",
-            questions: ["¿Cómo impactará la micro-gestión de Andrés en la retención de talentos clave?", "¿Es sostenible un modelo basado solo en el ejemplo técnico del líder?"],
+            title: "Selección: Andrés (Enfoque en Logro)",
+            text: "Andrés es un líder enfocado en la tarea individual. Su alta nAch sin 'poder socializado' genera microgestión: centraliza decisiones y evita delegar. Esto provoca que el equipo se sienta incapaz de alcanzar sus estándares, delegándole toda la responsabilidad. Es una solución de corto plazo que no sana la crisis cultural de fondo.",
+            questions: ["¿Cómo afectará la microgestión de Andrés a la retención de talentos de alto potencial?", "¿Es sostenible basar la recuperación de una sucursal solo en el ejemplo técnico del líder?"],
             type: "feedback-neutral"
         },
         'B': {
-            title: "Selección: Beatriz (Afiliación)",
-            text: "Beatriz es ideal para detener la rotación inmediata, pero corre el riesgo de crear un 'club social' en lugar de una unidad de negocio. Al evitar la confrontación necesaria, permite que las conductas tóxicas permanezcan ocultas tras una máscara de armonía. Este es un caso de liderazgo que puede confundir bienestar con falta de exigencia, lo cual termina frustrando a los colaboradores más competentes que no ven diferenciado su esfuerzo.",
-            questions: ["¿En qué punto la seguridad psicológica se convierte en una barrera para la rendición de cuentas?", "¿Cómo recuperar el 30% de ventas sin aplicar disciplina operativa?"],
+            title: "Selección: Beatriz (Enfoque en Afiliación)",
+            text: "Beatriz prioriza la seguridad psicológica, vital para detener la toxicidad, pero corre el riesgo de crear un 'club social' sin resultados. Al evitar la confrontación necesaria, permite que conductas ineficientes permanezcan ocultas. Este liderazgo confunde bienestar con falta de exigencia, frustrando a los colaboradores más competitivos.",
+            questions: ["¿En qué punto la armonía grupal se convierte en una barrera para la excelencia operativa?", "¿Cómo se puede recuperar el desempeño sin aplicar disciplina sobre los bajos rendimientos?"],
             type: "feedback-neutral"
         },
         'C': {
-            title: "Selección: Lucia (Poder)",
-            text: "Lucia utiliza su autoridad para poner orden en las funciones del equipo y para negociar ante los jefes regionales los recursos que la sucursal necesita. En crisis sistémicas, se requiere autoridad para clarificar el nuevo rumbo. No obstante, su éxito depende de la vigilancia ética para evitar que su necesidad de control sofoque el las voces disidentes. Es la opción estratégica más apta para un entorno de colapso de autoridad.",
-            questions: ["¿Qué mecanismos de control evitarían que Lucia derive en poder personalizado?", "¿Cómo distinguir si la lealtad que solicita es institucional o personal?"],
+            title: "Selección: Lucía (Enfoque en Poder)",
+            text: "Lucía utiliza su autoridad de forma socializada para redefinir roles y negociar recursos externos. En crisis sistémicas, se requiere este tipo de poder para clarificar el rumbo. Su éxito depende de la vigilancia ética para no sofocar las voces disidentes. Es la opción estratégica más apta para un colapso de autoridad y estructura.",
+            questions: ["¿Qué mecanismos institucionales evitarían que Lucía derive en un poder puramente personal?", "¿Cómo puede un líder de este perfil fomentar la lealtad hacia la meta y no hacia su persona?"],
             type: "feedback-correct"
         }
     };
 
     function select(id) {
-        selected = id;
-        document.querySelectorAll('.candidate-card').forEach((c, i) => {
-            c.classList.toggle('selected', (id === 'A' && i === 0) || (id === 'B' && i === 1) || (id === 'C' && i === 2));
+        selectedId = id;
+        // Limpieza de estados previos
+        document.querySelectorAll('.candidate-card').forEach(card => {
+            card.classList.remove('selected');
         });
+        // Aplicación de selección actual
+        const activeCard = document.getElementById(`card-${id}`);
+        if(activeCard) activeCard.classList.add('selected');
+        
         document.getElementById('submitBtn').disabled = false;
     }
 
     function renderFeedback() {
-        const item = data[selected];
+        if(!selectedId) return;
+
+        const config = feedbackConfig[selectedId];
         const panel = document.getElementById('feedback-panel');
-        panel.className = item.type;
-        document.getElementById('f-title').innerText = item.title;
-        document.getElementById('f-text').innerText = item.text;
-        
         const qList = document.getElementById('f-questions');
+
+        // Reset de contenido previo
         qList.innerHTML = "";
-        item.questions.forEach(q => {
+        
+        // Inyección de nueva data
+        document.getElementById('f-title').innerText = config.title;
+        document.getElementById('f-text').innerText = config.text;
+        panel.className = config.type;
+
+        config.questions.forEach(q => {
             const li = document.createElement('li');
             li.innerText = q;
             qList.appendChild(li);
         });
 
+        // Control de interfaz
         panel.style.display = 'block';
         document.getElementById('grid').style.pointerEvents = 'none';
         document.getElementById('submitBtn').style.display = 'none';
-        window.scrollTo({ top: panel.offsetTop - 20, behavior: 'smooth' });
+
+        // Scroll suave al feedback asegurado
+        setTimeout(() => {
+            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
     }
 </script>
 
