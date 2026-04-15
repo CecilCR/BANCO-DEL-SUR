@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -199,23 +200,23 @@
 <script>
     let selectedId = null;
 
-    const feedbackData = {
-        'A': {
-            title: "Selección: Andrés (Enfoque en el Logro)",
-            text: "Andrés garantiza una recuperación numérica inmediata, pero su costo es el agotamiento estructural. Según McClelland, un líder con alta nAch sin control de poder socializado tiende a convertirse en un 'contributor individual' glorificado. Su riesgo de micro-gestión impedirá que el equipo desmoralizado recupere su confianza. Elegirlo es una apuesta táctica a corto plazo, pero puede profundizar la crisis de retención de talento en la sucursal Sur.",
-            type: "feedback-neutral"
-        },
-        'B': {
-            title: "Selección: Beatriz (Enfoque en la Afiliación)",
-            text: "Elegir a Beatriz prioriza la 'sanación' del clima tóxico, pero ignora la urgencia de los resultados. La alta nAff es excelente para roles de apoyo, pero en una crisis de rendimiento del 30%, su evitación del conflicto puede interpretarse como debilidad. Sin establecer metas claras y consecuencias, el equipo puede sentirse cómodo pero seguirá sin ser productivo. Es un riesgo de complacencia organizacional.",
-            type: "feedback-neutral"
-        },
-        'C': {
-            title: "Selección: Carlos (Enfoque en el Poder)",
-            text: "Carlos es la opción más sólida para una reestructuración profunda, siempre que su Poder sea **Socializado**. Su capacidad de negociar recursos y mover influencias es vital para una sucursal abandonada. Sin embargo, el consultor debe vigilar su tendencia a opacar a otros. Si logra canalizar su necesidad de autoridad hacia el empoderamiento del equipo, será el catalizador que la sucursal Sur necesita para salir del estancamiento político.",
-            type: "feedback-correct"
-        }
-    };
+   const feedbackData = {
+    'A': {
+        title: "Selección: Andrés (Logro / nAch)",
+        text: "Elegir a Andrés asegura la supervivencia financiera inmediata, pero compromete el desarrollo del equipo. Su enfoque en el 'Hacer' genera una cultura de dependencia donde el líder es el único héroe. Según el Estándar P5, este es un riesgo de micro-gestión que perpetúa la desmoralización a largo plazo, ya que el equipo se siente incapaz de alcanzar sus estándares, delegando toda la responsabilidad en él.",
+        type: "feedback-neutral"
+    },
+    'B': {
+        title: "Selección: Beatriz (Afiliación / nAff)",
+        text: "Beatriz es ideal para detener la rotación de personal, pero corre el riesgo de crear un 'club social' en lugar de una unidad de negocio. Al evitar la retroalimentación negativa, permite que las conductas tóxicas que originaron la crisis permanezcan ocultas tras una máscara de armonía. En Educación Ejecutiva, este es un caso clásico de liderazgo que confunde bienestar con falta de exigencia.",
+        type: "feedback-neutral"
+    },
+    'C': {
+        title: "Selección: Carlos (Poder / nPow)",
+        text: "Carlos ofrece la solución estructural más robusta para una crisis de esta magnitud. Su enfoque en el Poder Socializado permite redefinir roles y recuperar la influencia externa. Sin embargo, su éxito depende de la vigilancia externa para evitar que su necesidad de control sofoque el talento emergente. Es la opción estratégica, pero requiere un marco de gobernanza ética muy sólido.",
+        type: "feedback-correct"
+    }
+};
 
     function selectCandidate(id) {
         selectedId = id;
