@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caso de decisión estratégica: Liderazgo y Motivación</title>
+    <title>Instrumento de Decisión Estratégica: Liderazgo y Motivación</title>
     <style>
         :root {
+            /* Paleta técnica validada v3.1 */
             --primary: #1a365d;
             --secondary: #2c5282;
             --accent: #ed8936;
@@ -33,7 +34,7 @@
             margin: 0 auto;
         }
 
-        /* Header de Contexto */
+        /* Header de Contexto Organizacional */
         .header-panel {
             background: var(--primary);
             color: white;
@@ -46,7 +47,7 @@
         .header-panel h1 { margin: 0 0 10px 0; font-size: 1.8rem; }
         .header-panel p { margin: 0; opacity: 0.9; font-size: 1.05rem; }
 
-        /* Grid de Perfiles */
+        /* Grid de Perfiles Matizados P5 */
         .candidate-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -119,7 +120,18 @@
             margin-top: auto;
         }
 
-        /* Botón y Feedback */
+        /* Estilo de Autoría Integrado */
+        .credits-footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Botón y Feedback Robusto */
         .footer-action { text-align: center; }
 
         .btn-submit {
@@ -163,49 +175,46 @@
 <div class="container">
     <div class="header-panel">
         <h1>Crisis en Sucursal Sur: Selección de Liderazgo</h1>
-        <p>Ventas -30% | Clima Laboral Tóxico | Desmoralización General. Como Gerente Regional, elija el perfil que garantice no solo resultados, sino salud organizacional sistémica.</p>
+        <p>Ventas -30% | Clima Laboral Tóxico | Rol: Gerente Regional. Analice los perfiles matizados bajo la Teoría de las Necesidades de McClelland.</p>
     </div>
 
     <div class="candidate-grid" id="grid">
         <div class="candidate-card" onclick="select('A')">
             <span class="n-tag">Logro / nAch</span>
-            <div class="candidate-title">Carmen: La Impulsora Técnica</div>
+            <div class="candidate-title">Andrés: El Impulsor Técnico</div>
             <div class="card-content">
                 <span class="section-label">Perfil</span>
-                <p>Extraordinaria "hacedora" y perfeccionista operativo. Su éxito radica en una autoexigencia extrema.</p>
-                <span class="section-label">Propuesta</span>
-                <p>"La crisis se resuelve con el ejemplo. Tomaré la cartera más crítica de inmediato. El que quiera aprender, que me siga el ritmo".</p>
-            </div>
-            <div class="risk-text">
-                <strong>Riesgo Profundo:</strong> Genera dependencia patológica y anula el desarrollo del equipo. Cree que el resultado es la única cultura válida.
+                <p>No es solo un vendedor exitoso; es un "perfeccionista operativo". Su éxito radica en la autoexigencia extrema.</p>
+                <span class="section-label">Matiz de Propuesta</span>
+                <p>"La crisis se resuelve con el ejemplo, no con reuniones. Tomaré la cartera corporativa más crítica. El que quiera aprender, que me siga el ritmo".</p>
+                <span class="section-label">Riesgo Profundo</span>
+                <p class="risk-text">Genera dependencia patológica. Al asumir tareas complejas, anula el desarrollo del equipo (Efecto Bottleneck). El resultado es su única cultura.</p>
             </div>
         </div>
 
         <div class="candidate-card" onclick="select('B')">
             <span class="n-tag">Afiliación / nAff</span>
-            <div class="candidate-title"> Pedro: El Cohesionador Emocional</div>
+            <div class="candidate-title">Beatriz: La Cohesionadora Emocional</div>
             <div class="card-content">
                 <span class="section-label">Perfil</span>
-                <p>Experto en Inteligencia Emocional y reducción de cortisol. Entiende la organización como tejido social.</p>
-                <span class="section-label">Propuesta</span>
+                <p>Entiende la organización como un tejido social. Su fortaleza es la Inteligencia Emocional y la reducción del cortisol.</p>
+                <span class="section-label">Matiz de Propuesta</span>
                 <p>"Un equipo herido no puede vender. Mi prioridad es restaurar la confianza y seguridad psicológica ante la Regional".</p>
-            </div>
-            <div class="risk-text">
-                <strong>Riesgo Profundo:</strong> Entropía por complacencia. Su aversión al conflicto genera puntos ciegos y desmotiva a los perfiles de alto desempeño.
+                <span class="section-label">Riesgo Profundo</span>
+                <p class="risk-text">Entropía por complacencia. Su aversión al conflicto genera puntos ciegos y desmotiva a perfiles de alto desempeño.</p>
             </div>
         </div>
 
         <div class="candidate-card" onclick="select('C')">
             <span class="n-tag">Poder / nPow</span>
-            <div class="candidate-title">Carlos: El Arquitecto de Poder</div>
+            <div class="candidate-title">Lucia: La Arquitecta de Poder</div>
             <div class="card-content">
                 <span class="section-label">Perfil</span>
-                <p>Gestor de recursos y estructuras. El liderazgo es el ejercicio de influencia para remover obstáculos sistémicos.</p>
-                <span class="section-label">Propuesta</span>
-                <p>"La sucursal perdió peso político. Necesito autoridad para reestructurar y negociar presupuesto, pero requiero lealtad absoluta".</p>
-            </div>
-            <div class="risk-text">
-                <strong>Riesgo Profundo:</strong> Desplazamiento hacia el Poder Personalizado. Riesgo de régimen de lealtades personales y opacidad de talentos disidentes.
+                <p>Gestora de recursos y estructuras. El liderazgo es el ejercicio de influencia para remover obstáculos sistémicos.</p>
+                <span class="section-label">Matiz de Propuesta</span>
+                <p>"La sucursal perdió peso político. Necesito un mandato para reestructurar y negociar presupuesto. Requiero lealtad absoluta".</p>
+                <span class="section-label">Riesgo Profundo</span>
+                <p class="risk-text">Desplazamiento hacia el Poder Personalizado. Riesgo de regímenes de lealtad y opacidad de talentos disidentes.</p>
             </div>
         </div>
     </div>
@@ -221,7 +230,13 @@
             <strong>Preguntas de Reflexión Crítica:</strong>
             <ul id="f-questions"></ul>
         </div>
-        <button class="btn-submit" style="margin-top:25px; padding:12px 30px; font-size:0.9rem" onclick="location.reload()">Analizar otro perfil</button>
+        <button class="btn-submit" style="margin-top:25px; padding:12px 30px; font-size:0.9rem" onclick="location.reload()">Analizar otro enfoque</button>
+    </div>
+
+    <div class="credits-footer">
+        Elaborado por <strong>Cecilia Carrasco Rivera</strong> <br>
+        Para el curso de <strong>[Gestipon de las Relaciones en las Organizaciones]</strong> <br>
+        <em>Instrumento de Evaluación Formativa - 2026</em>
     </div>
 </div>
 
@@ -230,21 +245,21 @@
 
     const data = {
         'A': {
-            title: "Selección: Carmen (Enfoque en el Logro)",
-            text: "Carmen es el líder de 'crisis de choque', pero su impacto suele ser efímero. Según McClelland, una nAch alta sin Poder Socializado devora el crecimiento del equipo. Su enfoque en 'hacerlo él mismo' valida su récord de ventas pero invalida la capacidad de sus colaboradores, perpetuando el Efecto Bottleneck. Para una sucursal con -30% de ventas, Carmen es una aspirina para una infección: calma el síntoma numérico pero no cura la desmoralización estructural.",
-            questions: ["¿Es sostenible un modelo de liderazgo basado únicamente en el ejemplo técnico?", "¿Cómo afectará la micro-gestión de Carmen a los colaboradores con alto potencial de crecimiento?"],
+            title: "Selección: Andrés (Logro / nAch)",
+            text: "Andrés es un líder de choque, pero su enfoque en el 'Hacer' genera una cultura de dependencia donde él es el único héroe. Según McClelland, un líder con alta nAch sin Poder Socializado devora el crecimiento del equipo. Su micro-gestión perpetúa el Efecto Bottleneck: el equipo se siente incapaz de alcanzar sus estándares y deja de intentarlo, delegando toda la responsabilidad en el líder. Es una solución de corto plazo que no cura la crisis cultural de fondo.",
+            questions: ["¿Cómo impactará la micro-gestión de Andrés en la retención de talentos clave?", "¿Es sostenible un modelo basado solo en el ejemplo técnico del líder?"],
             type: "feedback-neutral"
         },
         'B': {
-            title: "Selección: Beatriz (Enfoque en la Afiliación)",
-            text: "Beatriz prioriza la Salud Organizacional, lo cual es éticamente valioso pero operativamente arriesgado en este contexto. Su alta nAff puede convertir a la sucursal en un 'refugio emocional' donde no se rinden cuentas. Al evitar la confrontación necesaria con los bajos desempeños, Beatriz corre el riesgo de castigar involuntariamente a los mejores elementos, quienes sentirán que el esfuerzo no marca una diferencia. Es una apuesta por el clima que puede ignorar la urgencia de la supervivencia financiera.",
-            questions: ["¿En qué punto la seguridad psicológica se convierte en una barrera para la exigencia operativa?", "¿Cómo puede Beatriz equilibrar el afecto con la disciplina necesaria para recuperar el 30% de las ventas?"],
+            title: "Selección: Beatriz (Afiliación / nAff)",
+            text: "Beatriz es ideal para detener la rotación inmediata, pero corre el riesgo de crear un 'club social' en lugar de una unidad de negocio. Al evitar la confrontación necesaria, permite que las conductas tóxicas permanezcan ocultas tras una máscara de armonía. En Educación Ejecutiva, este es un caso de liderazgo que confunde bienestar con falta de exigencia, lo cual termina frustrando a los colaboradores más competentes que no ven diferenciado su esfuerzo.",
+            questions: ["¿En qué punto la seguridad psicológica se convierte en una barrera para la rendición de cuentas?", "¿Cómo recuperar el 30% de ventas sin aplicar disciplina operativa?"],
             type: "feedback-neutral"
         },
         'C': {
-            title: "Selección: Carlos (Enfoque en el Poder)",
-            text: "Carlos ofrece la solución más estratégica para un sistema en colapso sistémico. Su enfoque en el Poder Socializado permite redefinir el peso político de la sucursal y atraer recursos. En crisis graves, se requiere autoridad para clarificar roles y establecer un nuevo orden. El riesgo reside en la vigilancia: si Carlos deriva en Poder Personalizado, la sucursal será eficiente pero opaca. Es la opción con mayor capacidad de transformación de fondo, siempre que se establezcan controles de mérito y transparencia.",
-            questions: ["¿Qué mecanismos de control requiere un líder de perfil nPow para no asfixiar el talento emergente?", "¿Cómo distinguir si la lealtad que pide Carlos es hacia la organización o hacia su propia figura política?"],
+            title: "Selección: Lucia (Poder / nPow)",
+            text: "Lucia utiliza su autoridad para poner orden en las funciones del equipo y para negociar ante los jefes regionales los recursos que la sucursal necesita. En crisis sistémicas, se requiere autoridad para clarificar el nuevo rumbo. No obstante, su éxito depende de la vigilancia ética para evitar que su necesidad de control sofoque el pensamiento disidente. Es la opción estratégica más apta para un entorno de colapso de autoridad.",
+            questions: ["¿Qué mecanismos de control evitarían que Lucia derive en poder personalizado?", "¿Cómo distinguir si la lealtad que solicita es institucional o personal?"],
             type: "feedback-correct"
         }
     };
